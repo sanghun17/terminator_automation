@@ -186,10 +186,13 @@ def split_terminator_init():
 
 def enter_ssh():
     global server_name, server_ip, server_passward
+    subprocess.run(['xdotool', 'key', 'Alt+a'])
     cmd = 'ssh '+ server_name + '@'+ server_ip
     type_cmd(cmd)
     type_cmd(server_passward)
+    subprocess.run(['xdotool', 'key', 'Alt+o'])
     time.sleep(1)
+    
     
 def name_terminal(name):
     subprocess.run(['xdotool', 'key', 'Control_R+n'])
@@ -212,25 +215,25 @@ def main():
     move_focus("next")
 
     # 12
-    enter_ssh()
+    # enter_ssh()
     name_terminal("vesc")
     type_cmd("vesc")
     move_focus("next")
 
     # 13
-    enter_ssh()
+    # enter_ssh()
     name_terminal("lidar")
     type_cmd("lidar")
     move_focus("next")
 
     # 14
-    enter_ssh()
+    # enter_ssh()
     name_terminal("14")
     type_cmd("14")
     move_focus("next")
 
     # 21
-    enter_ssh()
+    # enter_ssh()
     name_terminal("21")
     type_cmd("21")
     move_focus("next")
