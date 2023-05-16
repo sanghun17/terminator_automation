@@ -3,9 +3,9 @@ import time
 import os
 import re
 
-server_name = 'shx1'
-server_ip = '192.168.0.20'
-server_passward = '1234'
+server_name = 'hmcl'
+server_ip = '192.168.50.35'
+server_passward = 'hmc2020'
 current_focus_row = -1
 current_focus_col = -1
 max_row = 3
@@ -189,9 +189,12 @@ def enter_ssh():
     subprocess.run(['xdotool', 'key', 'Alt+a'])
     cmd = 'ssh '+ server_name + '@'+ server_ip
     type_cmd(cmd)
+    time.sleep(3)
+    type_cmd(cmd)
+    time.sleep(3)
     type_cmd(server_passward)
     subprocess.run(['xdotool', 'key', 'Alt+o'])
-    time.sleep(1)
+    time.sleep(5)
     
     
 def name_terminal(name):
@@ -207,44 +210,59 @@ def main():
 
     split_terminator_init() # predefined 3*4 layout
     move_focus("init") # move focus to left top
+    enter_ssh() # all terminal ssh access
 
     # 11
-    enter_ssh()
     name_terminal("roscore")
     type_cmd("roscore")
     move_focus("next")
+    time.sleep(3)
 
     # 12
-    # enter_ssh()
     name_terminal("vesc")
     type_cmd("vesc")
     move_focus("next")
 
     # 13
-    # enter_ssh()
     name_terminal("lidar")
     type_cmd("lidar")
     move_focus("next")
 
     # 14
-    # enter_ssh()
-    name_terminal("14")
-    type_cmd("14")
+    name_terminal("imu")
+    type_cmd("imu")
     move_focus("next")
 
     # 21
-    # enter_ssh()
-    name_terminal("21")
-    type_cmd("21")
+    name_terminal("carto")
+    type_cmd("carto")
     move_focus("next")
 
     # 22
+    name_terminal("factor")
+    type_cmd("factor")
+    move_focus("next")   
 
     # 23
+    name_terminal("high_speed")
+    type_cmd("roslaunch highspeed_ctrl highspeed_ctrl.launch")
+    move_focus("next")   
 
     # 24
+    name_terminal("pub_track_rviz")
+    type_cmd("track_rviz")
+    move_focus("next")   
 
     # 31
+    split_h()
+    name_terminal("rqt")
+    type_cmd("rqt")
+    split_h()
+    name_terminal("rviz")
+    type_cmd("rviz")
+    split_h()
+    name_terminal("joy")
+    type_cmd("joy")
 
     # 32
 
