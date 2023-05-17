@@ -3,8 +3,8 @@ import time
 import os
 import re
 
-server_name = 'hmcl'
-server_ip = '192.168.50.35'
+server_name = 'ros2nx'
+server_ip = '192.168.50.149'
 server_passward = 'hmc2020'
 current_focus_row = -1
 current_focus_col = -1
@@ -189,9 +189,9 @@ def enter_ssh():
     subprocess.run(['xdotool', 'key', 'Alt+a'])
     cmd = 'ssh '+ server_name + '@'+ server_ip
     type_cmd(cmd)
-    time.sleep(3)
+    time.sleep(5)
     type_cmd(cmd)
-    time.sleep(3)
+    time.sleep(5)
     type_cmd(server_passward)
     subprocess.run(['xdotool', 'key', 'Alt+o'])
     time.sleep(5)
@@ -206,7 +206,7 @@ def name_terminal(name):
 def main():
     subprocess.Popen(['terminator']) # Open terminator
     find_terminator_shortcut() # find shortcut from config file
-    time.sleep(1) # Wait for the terminals to open
+    time.sleep(2) # Wait for the terminals to open
 
     split_terminator_init() # predefined 3*4 layout
     move_focus("init") # move focus to left top
@@ -216,7 +216,7 @@ def main():
     name_terminal("roscore")
     type_cmd("roscore")
     move_focus("next")
-    time.sleep(3)
+    time.sleep(5)
 
     # 12
     name_terminal("vesc")
